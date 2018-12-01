@@ -10,7 +10,7 @@ import {
 class CustomImage extends Component {
     constructor(props, context) {
         super(props, context);
-        console.log(props);
+        console.log('props' + props);
 
         this.state = {
             weight :{
@@ -20,38 +20,40 @@ class CustomImage extends Component {
             }
 
         };
+
         this.onChooseWeight = this.onChooseWeight.bind(this);
     }
 
     onChooseWeight(key) {
+
         const w_foraction = this.state.weight;
         let wkg,wlb,wpalte = '';
-        switch(key) {
-            case '1': {
+        switch(String(key)) {
+            case '10': {
                 wkg = (10/2.2);
                 wlb = 10;
                 wpalte = '10lb';
                 break;
             }
-            case '2': {
+            case '15': {
                 wkg = (15/2.2);
                 wlb = 15;
                 wpalte = '15lb';
                 break;
             }
-            case '3': {
+            case '25': {
                 wkg = (25/2.2);
                 wlb = 25;
                 wpalte = '25lb';
                 break;
             }
-            case '4': {
+            case '35': {
                 wkg = (35/2.2);
                 wlb = 35;
                 wpalte = '35lb';
                 break;
             }
-            case '5': {
+            case '45': {
                 wkg = (45/2.2);
                 wlb = 45;
                 wpalte = '45lb';
@@ -65,8 +67,9 @@ class CustomImage extends Component {
         w_foraction.wkg = wkg;
         w_foraction.wlb = wlb;
         w_foraction.wplate = wpalte;
-
+        let w_kg_all = Number.parseFloat(wkg).toFixed(2) == undefined ? '0':(Number.parseFloat(wkg).toFixed(2))*2;
         this.props.dispatch(calcWeight.CalcWeight(w_foraction));
+        this.props.dispatch(calcWeight.ReCalc(w_kg_all));
     }
 
     render() {
@@ -77,7 +80,7 @@ class CustomImage extends Component {
                 <Image
                     key={this.props.imgkey}
                     source={this.props.imageName}
-                    style={styles.image} />
+                   />
             </TouchableOpacity>
         );
 
@@ -86,12 +89,13 @@ class CustomImage extends Component {
 
 
 const styles = {
+
     view: {
         position: 'absolute',
         backgroundColor: 'transparent'
     },
     image: {
-        width:85
+        width:18
     },
     touchable: {
         alignItems: 'center',
@@ -106,7 +110,8 @@ const styles = {
 
 function mapStateToProps(state,ownProps) {
     return {
-        weight: state.weight
+        currWeight:state.currWeight,
+        calcReducer: state.calcReducer
     };
 }
 //mapDispatchToProps is deleted and dispatch is there by default

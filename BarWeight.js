@@ -1,10 +1,14 @@
 'use strict'
 import React, { Component } from 'react';
+import CustomImage from './CustomImage';
 import {connect} from 'react-redux';
 
 import {
-    Image,TouchableOpacity,View,Text
+    Image,TouchableOpacity,View,Text,Dimensions,ImageBackground
 } from 'react-native';
+import {
+    Card
+} from 'react-native-paper';
 
 class BarWeight extends Component {
     constructor(props, context) {
@@ -25,72 +29,67 @@ class BarWeight extends Component {
     onChooseWeight(key) {
         const w_foraction = this.state.weight;
         let wkg,wlb,wpalte = '';
-        switch(key) {
-            case '1': {
-                wkg = (10/2.2);
-                wlb = 10;
-                wpalte = '10lb';
-                break;
-            }
-            case '2': {
-                wkg = (15/2.2);
-                wlb = 15;
-                wpalte = '15lb';
-                break;
-            }
-            case '3': {
-                wkg = (25/2.2);
-                wlb = 25;
-                wpalte = '25lb';
-                break;
-            }
-            case '4': {
-                wkg = (35/2.2);
-                wlb = 35;
-                wpalte = '35lb';
-                break;
-            }
-            case '2': {
-                wkg = (45/2.2);
-                wlb = 45;
-                wpalte = '45lb';
-                break;
-            }
-            default: {
-                //statements;
-                break;
-            }
-        }
-        w_foraction.wkg = wkg;
-        w_foraction.wlb = wlb;
-        w_foraction.wplate = wpalte;
 
-        this.props.dispatch(calcWeight.CalcWeight(w_foraction));
+
+
+
     }
+
+
 
     CalcRow(calc,index) {
+        let ind = index;
+        let key = calc.wlb;
+        switch(key) {
+            case 10: {
+                return  <View><CustomImage imgkey={key} imageName={require('./img/10lb.png')} bU='1'/></View>
+            }
+            case 15: {
+                return  <View><CustomImage imgkey={key} imageName={require('./img/15lb.png')} bU='1'/></View>
+            }
+            case 25: {
+                return  <View><CustomImage imgkey={key} imageName={require('./img/25lb.png')} bU='1'/></View>
+            }
+            case 35: {
+                return  <View><CustomImage imgkey={key} imageName={require('./img/35lb.png')} bU='1'/></View>
+            }
+            case 45: {
+                return  <View><CustomImage imgkey={key} imageName={require('./img/45lb.png')} bU='1'/></View>
 
-        return <View style={styles.view}><Text key={index} style={styles.headerStyle}>{calc.wplate}</Text><Text key={index} style={styles.headerStyle}>{calc.wplate}</Text></View>
+            }
+            default: {
+                return <View><Text>barweight</Text></View>
+            }
+        }
 
 
     }
-
-    render() {
+     render() {
         return (
-            <View>
-                {this.props.weight.map(this.CalcRow)}
-            </View>
 
+        <View style={{ alignItems: 'center', justifyContent: 'center'}}>
+
+                <ImageBackground source={require('./img/bb.png')} style={{width:350, height: 100}}>
+                    <View style={styles.view}>
+                        {this.props.calcReducer.map(this.CalcRow)}
+                    </View>
+                </ImageBackground>
+
+        </View>
         );
 
     }
 };
+/*
+const aa  = {
 
-
+                    }*/
 const styles = {
     view: {
-        flexDirection:'row'
+        flexDirection:'row-reverse',
+        marginStart:75
     },
+
     image: {
         width:85
     },
@@ -102,12 +101,21 @@ const styles = {
 
         fontSize: 18,
         textAlign: 'center'
+    },
+    cardStyle : {
+        width: Dimensions.get('window').width - 50,
+        height:100,
+        textAlign:'center',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection:'row'
     }
 }
 
 function mapStateToProps(state,ownProps) {
     return {
-        weight: state.weight
+        currWeight:state.currWeight,
+        calcReducer: state.calcReducer
     };
 }
 //mapDispatchToProps is deleted and dispatch is there by default

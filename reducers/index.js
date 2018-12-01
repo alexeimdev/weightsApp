@@ -1,9 +1,10 @@
 import {combineReducers} from 'redux';
-import  weight from './calcReducer';
+import  {currWeight,calcReducer} from './calcReducer';
 
 
 const rootReducer = combineReducers({
-    weight
+    currWeight,
+    calcReducer
     //short hand property name
 })
 

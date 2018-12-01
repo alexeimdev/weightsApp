@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import * as calcActions from './actions/calcActions';
 import CustomImage from './CustomImage';
 import BarWeight from './BarWeight';
+import CurrWeight from './CurrWeight';
 
 import {
     Text,
@@ -36,22 +37,24 @@ class MainPage extends Component{
 
 
     render() {
+        let curr = this.props.currWeight.currW;
+        let ckg = curr;
+        let clb = Number.parseFloat((curr/2.2)).toFixed(2) == undefined ? '0':Number.parseFloat((curr/2.2)).toFixed(2);
         return (
             <View style={[{flex: 3}, styles.elementsContainer]}>
-              <View style={{flex:1,justifyContent: "center",alignItems: "center" , backgroundColor: '#FCCDDD'}}>
-                <Button style={styles.MidStyle}
-                        title="Home" onPress={this.onPressLearnMore}
-                />
-              </View>
-                <View style={{flex:1,justifyContent: "center",alignItems: "center" , backgroundColor: '#FCCDDD'}}>
+
+                <View style={{flex:1,justifyContent: "center",alignItems: "center" , backgroundColor: '#a73232'}}>
+                    <CurrWeight curkg={ckg} curlb={clb}/>
+                </View>
+                <View style={{flex:1,justifyContent: "center",alignItems: "center" , backgroundColor: '#a73232'}}>
                     <BarWeight />
                 </View>
-              <View style={{flex:1,justifyContent: "center",alignItems: "center" ,flexDirection:'row', backgroundColor: '#FAADDD'}}>
-                  <CustomImage imgkey='1' imageName={require('./img/10lb.png')}/>
-                  <CustomImage imgkey='2' imageName={require('./img/15lb.png')}/>
-                  <CustomImage imgkey='3' imageName={require('./img/25lb.png')}/>
-                  <CustomImage imgkey='4' imageName={require('./img/35lb.png')}/>
-                  <CustomImage imgkey='5' imageName={require('./img/45lb.png')}/>
+              <View style={{flex:1,justifyContent: "center",alignItems: "center" ,flexDirection:'row', backgroundColor: '#a73232'}}>
+                   <View style={{paddingRight:30}}><CustomImage imgkey='10' imageName={require('./img/10lb.png')} bU='0'/></View>
+                   <View style={{paddingRight:30}}><CustomImage imgkey='15' imageName={require('./img/15lb.png')} bU='0'/></View>
+                   <View style={{paddingRight:30}}><CustomImage imgkey='25' imageName={require('./img/25lb.png')} bU='0'/></View>
+                   <View style={{paddingRight:30}}><CustomImage imgkey='35' imageName={require('./img/35lb.png')} bU='0'/></View>
+                   <View style={{paddingRight:30}}><CustomImage imgkey='45' imageName={require('./img/45lb.png')} bU='0'/></View>
               </View>
 
             </View>
@@ -85,8 +88,19 @@ const styles = {
 
 function mapStateToProps(state,ownProps) {
     return {
-        weight: state.weight
+        currWeight:state.currWeight,
+        calcReducer: state.calcReducer
     };
 }
 //mapDispatchToProps is deleted and dispatch is there by default
 export default connect(mapStateToProps)(MainPage);
+
+/*
+*
+*  <View style={{flex:1,justifyContent: "center",alignItems: "center" , backgroundColor: '#FCCDDD'}}>
+                <Button style={styles.MidStyle}
+                        title="Home" onPress={this.onPressLearnMore}
+                />
+              </View>
+*
+* */

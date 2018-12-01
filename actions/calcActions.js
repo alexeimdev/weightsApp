@@ -1,9 +1,9 @@
 export function CalcWeight(weight) {
     return { type: 'CALCULATE_WEIGHT', weight : weight}
 }
-export function CURR(title) {
-    return { type: 'CURR', title : title}
+export function DelWeight(weight) {
+    return { type: 'REMOVE_WEIGHT', weight : weight}
 }
-export function ShowBar(weight) {
-    return { type: 'SHOWBAR', weight : weight}
+export function ReCalc(currW) {
+    return { type: 'ADDWEIGHT', currW : currW}
 }

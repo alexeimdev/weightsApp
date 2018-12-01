@@ -28,6 +28,7 @@ class CalcPage extends Component{
     onPressLearnMore () {
         const { navigate } = this.props.navigation;
         navigate('HomeRT');
+
     }
 
     CalcRow(calc,index) {

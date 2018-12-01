@@ -1,4 +1,4 @@
-export default function calcReducer(state = [],action) {
+export function calcReducer(state = [],action) {
     switch(action.type) {
         case 'CALCULATE_WEIGHT':
 
@@ -6,13 +6,19 @@ export default function calcReducer(state = [],action) {
            // if(index == -1)
                 return [...state, Object.assign( {},action.weight)];
            // return state;
+        case 'REMOVE_WEIGHT':
+            return state.filter((data, i) => i !== action.id);
+        default:
+            return state;
+    }
+}
 
-        case 'CURR':
-            return state;
-                //return [state, Object.assign( {},action.title)];
-        case 'SHOWBAR':
-            return state;
-            //return [state, Object.assign( {},action.title)];
+export function currWeight(state = {currW:0},action) {
+    switch(action.type) {
+        case 'ADDWEIGHT':
+            return Object.assign({},state,{
+                currW :(state.currW + action.currW)
+            })
 
         default:
             return state;
