@@ -34,7 +34,6 @@ export default class App extends Component<Props> {
             <Text style={styles.headerStyle}>EasyWeights</Text>
             <MyRoutes />
           </View>
-
         </Provider>
     );
   }
@@ -42,19 +41,13 @@ export default class App extends Component<Props> {
 
 const styles = {
     container: {
-        marginTop: 48,
+        marginTop: 30,
         flex: 1
     },
     headerStyle: {
         fontSize: 36,
         textAlign: 'center',
         fontWeight: '100',
-        marginBottom: 24
+        marginBottom: 15
     },
-    elementsContainer: {
-        backgroundColor: '#ecf5fd',
-        marginLeft: 24,
-        marginRight: 24,
-        marginBottom: 24
-    }
 }

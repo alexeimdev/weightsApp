@@ -24,59 +24,113 @@ class CustomImage extends Component {
         this.onChooseWeight = this.onChooseWeight.bind(this);
     }
 
-    onChooseWeight(key) {
+    onChooseWeight(key,isBu) {
 
+        console.log('isBu=' + isBu);
         const w_foraction = this.state.weight;
-        let wkg,wlb,wpalte = '';
-        switch(String(key)) {
-            case '10': {
-                wkg = (10/2.2);
-                wlb = 10;
-                wpalte = '10lb';
-                break;
+        if(isBu == 99) {
+            let barbell = parseInt(key.substr(0,key.length-2));
+            this.props.dispatch(calcWeight.ChangeBarBell(barbell));
+        }
+        else
+        {
+            let wkg,wlb,wpalte = '';
+            switch(String(key)) {
+                case '10': {
+                    wkg = (10/2.2);
+                    wlb = 10;
+                    wpalte = '10lb';
+                    break;
+                }
+                case '15': {
+                    wkg = (15/2.2);
+                    wlb = 15;
+                    wpalte = '15lb';
+                    break;
+                }
+                case '25': {
+                    wkg = (25/2.2);
+                    wlb = 25;
+                    wpalte = '25lb';
+                    break;
+                }
+                case '35': {
+                    wkg = (35/2.2);
+                    wlb = 35;
+                    wpalte = '35lb';
+                    break;
+                }
+                case '45': {
+                    wkg = (45/2.2);
+                    wlb = 45;
+                    wpalte = '45lb';
+                    break;
+                }
+                case '55': {
+                    wkg = (55/2.2);
+                    wlb = 55;
+                    wpalte = '55lb';
+                    break;
+                }
+                case '2': {
+                    wlb = (20*2.2);
+                    wkg = 20;
+                    wpalte = '2kg';
+                    break;
+                }
+                case '1': {
+                    wlb = (10*2.2);
+                    wkg = 10;
+                    wpalte = '1kg';
+                    break;
+                }
+                case '5': {
+                    wlb = (5*2.2);
+                    wkg = 5;
+                    wpalte = '5kg';
+                    break;
+                }
+                case '11': {
+                    wlb = (1.25*2.2);
+                    wkg = 1.25;
+                    wpalte = '11kg';
+                    break;
+                }
+                case '22': {
+                    wlb = (2.5*2.2);
+                    wkg = 2.5;
+                    wpalte = '22kg';
+                    break;
+                }
+                default: {
+                    //statements;
+                    break;
+                }
             }
-            case '15': {
-                wkg = (15/2.2);
-                wlb = 15;
-                wpalte = '15lb';
-                break;
+            w_foraction.wkg = Number.parseFloat(wkg).toFixed(2);
+            w_foraction.wlb = wlb;
+            w_foraction.wplate = wpalte;
+            let w_kg_all = Number.parseFloat(wkg).toFixed(2) == undefined ? '0':(Number.parseFloat(wkg).toFixed(2))*2;
+
+            if(isBu == '0') {
+                console.log('isBuFor=' + isBu)
+                this.props.dispatch(calcWeight.CalcWeight(w_foraction));
+                this.props.dispatch(calcWeight.ReCalc(w_kg_all));
             }
-            case '25': {
-                wkg = (25/2.2);
-                wlb = 25;
-                wpalte = '25lb';
-                break;
-            }
-            case '35': {
-                wkg = (35/2.2);
-                wlb = 35;
-                wpalte = '35lb';
-                break;
-            }
-            case '45': {
-                wkg = (45/2.2);
-                wlb = 45;
-                wpalte = '45lb';
-                break;
-            }
-            default: {
-                //statements;
-                break;
+            else {
+                console.log('isBuElse=' + isBu)
+                this.props.dispatch(calcWeight.DelWeight(w_foraction));
+                this.props.dispatch(calcWeight.ReCalcREM(w_kg_all));
             }
         }
-        w_foraction.wkg = wkg;
-        w_foraction.wlb = wlb;
-        w_foraction.wplate = wpalte;
-        let w_kg_all = Number.parseFloat(wkg).toFixed(2) == undefined ? '0':(Number.parseFloat(wkg).toFixed(2))*2;
-        this.props.dispatch(calcWeight.CalcWeight(w_foraction));
-        this.props.dispatch(calcWeight.ReCalc(w_kg_all));
+
     }
 
     render() {
 
         return (
 
-            <TouchableOpacity style={styles.touchable} onPress={() => this.onChooseWeight(this.props.imgkey)}>
+            <TouchableOpacity style={styles.touchable} onPress={() => this.onChooseWeight(this.props.imgkey,this.props.bU)}>
                 <Image
                     key={this.props.imgkey}
                     source={this.props.imageName}
@@ -112,6 +166,7 @@ function mapStateToProps(state,ownProps) {
     return {
         currWeight:state.currWeight,
         calcReducer: state.calcReducer
+
     };
 }
 //mapDispatchToProps is deleted and dispatch is there by default

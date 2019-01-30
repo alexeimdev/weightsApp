@@ -7,3 +7,9 @@ export function DelWeight(weight) {
 export function ReCalc(currW) {
     return { type: 'ADDWEIGHT', currW : currW}
 }
+export function ReCalcREM(currW) {
+    return { type: 'REMWEIGHT', currW : currW}
+}
+export function ChangeBarBell(barbell) {
+    return { type: 'CHANGEBARBELL', barbell : barbell}
+}

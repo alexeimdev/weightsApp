@@ -9,10 +9,21 @@ import { Text,View
 
 export default class CurrWeight extends React.Component {
     render () {
+        let kg = Number.parseFloat(this.props.curkg) + Number.parseFloat(this.props.brb.barbell);
+        debugger;
+        let lb = Number.parseFloat((Number.parseFloat(this.props.brb.barbell)*(2.2).toFixed(2)) + Number.parseFloat(this.props.curlb)).toFixed(2);
+
         return (
-            <View style={{ flexDirection:'row-reverse'}}>
-                <Text>{this.props.curkg} kg</Text>
-                <Text>{this.props.curlb} lb</Text>
+            <View style={{ flexDirection:'row-reverse',flex:1}}>
+                <View style={styles.currWeightTextViewKG}>
+                    <Text style={styles.currWeightText}>{kg} kg</Text>
+                </View>
+                <View style={styles.currWeightTextView}>
+                    <Text style={styles.currWeightText}>{lb} lb</Text>
+                </View>
+
+
+
             </View>
         )
     }
@@ -20,7 +31,32 @@ export default class CurrWeight extends React.Component {
 
 
 
+const styles = {
 
+    currWeightTextView : {
+        flex:0.5,
+        height:100,
+        textAlign:'center',
+        alignItems: 'center',
+        justifyContent: 'center',
+
+        backgroundColor:'red'
+    },
+    currWeightText: {
+        color:'white',
+        fontWeight:'bold',
+        fontSize:25
+    },
+    currWeightTextViewKG: {
+        flex:0.5,
+        height:100,
+        textAlign:'center',
+        alignItems: 'center',
+        justifyContent: 'center',
+
+        backgroundColor:'blue'
+    }
+}
 
 /*
 //<editor-fold desc="Old">
@@ -58,33 +94,7 @@ class CurrWeight extends Component {
 const aa  = {
 
                     }*!/
-const styles = {
-    view: {
-        flexDirection:'row-reverse',
-        marginStart:75
-    },
 
-    image: {
-        width:85
-    },
-    touchable: {
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    text: {
-
-        fontSize: 18,
-        textAlign: 'center'
-    },
-    cardStyle : {
-        width: Dimensions.get('window').width - 50,
-        height:100,
-        textAlign:'center',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection:'row'
-    }
-}
 
 function mapStateToProps(state,ownProps) {
     return {

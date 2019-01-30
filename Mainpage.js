@@ -37,26 +37,54 @@ class MainPage extends Component{
 
 
     render() {
+        debugger;
         let curr = this.props.currWeight.currW;
+        let brb = this.props.currBarbell;
         let ckg = curr;
-        let clb = Number.parseFloat((curr/2.2)).toFixed(2) == undefined ? '0':Number.parseFloat((curr/2.2)).toFixed(2);
+        let clb = Number.parseFloat((curr*2.2)).toFixed(2) == undefined ? '0':Number.parseFloat((curr*2.2)).toFixed(2);
         return (
-            <View style={[{flex: 3}, styles.elementsContainer]}>
-
-                <View style={{flex:1,justifyContent: "center",alignItems: "center" , backgroundColor: '#a73232'}}>
-                    <CurrWeight curkg={ckg} curlb={clb}/>
+            <View style={styles.container}>
+                <View style = {styles.backgroundContainer}>
+                    <Image source = {require('./img/bgpic.png')} resizeMode = 'cover' style = {styles.backdrop} />
                 </View>
-                <View style={{flex:1,justifyContent: "center",alignItems: "center" , backgroundColor: '#a73232'}}>
-                    <BarWeight />
-                </View>
-              <View style={{flex:1,justifyContent: "center",alignItems: "center" ,flexDirection:'row', backgroundColor: '#a73232'}}>
-                   <View style={{paddingRight:30}}><CustomImage imgkey='10' imageName={require('./img/10lb.png')} bU='0'/></View>
-                   <View style={{paddingRight:30}}><CustomImage imgkey='15' imageName={require('./img/15lb.png')} bU='0'/></View>
-                   <View style={{paddingRight:30}}><CustomImage imgkey='25' imageName={require('./img/25lb.png')} bU='0'/></View>
-                   <View style={{paddingRight:30}}><CustomImage imgkey='35' imageName={require('./img/35lb.png')} bU='0'/></View>
-                   <View style={{paddingRight:30}}><CustomImage imgkey='45' imageName={require('./img/45lb.png')} bU='0'/></View>
-              </View>
+                <View style = {styles.overlay}>
+                    <View style={[{flex: 1}, styles.elementsContainer]}>
+                        <View style={{flex:1,justifyContent: "center",alignItems: "center" }}>
+                            <CurrWeight curkg={ckg} curlb={clb} brb={brb}/>
+                        </View>
 
+                        <View style={{flex:1,justifyContent: "center",alignItems: "center" ,flexDirection:'row'}}>
+                            <View style={styles.barbellView}><CustomImage imgkey='20kg' imageName={require('./img/20kgbar.png')} bU='99'/></View>
+                            <View style={styles.barbellView}><CustomImage imgkey='15kg' imageName={require('./img/15kgbar.png')} bU='99'/></View>
+                            <View style={styles.barbellView}><CustomImage imgkey='10kg' imageName={require('./img/10kgbar.png')} bU='99'/></View>
+                            <View style={styles.barbellView}><CustomImage imgkey='5kg' imageName={require('./img/5kgbar.png')} bU='99'/></View>
+                        </View>
+
+                        <View style={{flex:1,justifyContent: "center",alignItems: "center"}}>
+                            <BarWeight />
+                        </View>
+
+                        <View style={{flex:1,justifyContent: "center",width:'100%',alignItems: "center" ,flexDirection:'row',backgroundColor:'red'}}>
+                            <View style={styles.weightsView}><CustomImage imgkey='2' imageName={require('./img/20kg.png')} bU='0'/></View>
+                            <View style={styles.weightsView}><CustomImage imgkey='1' imageName={require('./img/10kg.png')} bU='0'/></View>
+                            <View style={styles.weightsView}><CustomImage imgkey='5' imageName={require('./img/5kg.png')} bU='0'/></View>
+                            <View style={{flexDirection:'column'}}>
+                                <View style={styles.weightsView}><CustomImage imgkey='11' imageName={require('./img/1_5kg.png')} bU='0'/></View>
+                                <View style={styles.weightsView}><CustomImage imgkey='22' imageName={require('./img/2_5kg.png')} bU='0'/></View>
+                            </View>
+                        </View>
+
+                        <View style={{flex:1,justifyContent: "center",alignItems: "center" ,flexDirection:'row'}}>
+                            <View style={styles.weightsView}><CustomImage imgkey='10' imageName={require('./img/10lb.png')} bU='0'/></View>
+                            <View style={styles.weightsView}><CustomImage imgkey='15' imageName={require('./img/15lb.png')} bU='0'/></View>
+                            <View style={styles.weightsView}><CustomImage imgkey='25' imageName={require('./img/25lb.png')} bU='0'/></View>
+                            <View style={styles.weightsView}><CustomImage imgkey='35' imageName={require('./img/35lb.png')} bU='0'/></View>
+                            <View style={styles.weightsView}><CustomImage imgkey='45' imageName={require('./img/45lb.png')} bU='0'/></View>
+                            <View style={styles.weightsView}><CustomImage imgkey='55' imageName={require('./img/55lb.png')} bU='0'/></View>
+                        </View>
+
+                    </View>
+                </View>
             </View>
         );
 
@@ -65,8 +93,16 @@ class MainPage extends Component{
 
 const styles = {
     container: {
-        marginTop: 48,
-        flex: 1
+        flex: 1,
+        alignItems: 'center',
+    },
+    weightsView: {
+        paddingRight:20
+    },
+
+    barbellView: {
+        paddingRight:10,
+
     },
     headerStyle: {
         fontSize: 22,
@@ -79,28 +115,39 @@ const styles = {
         fontWeight: '100',
     },
     elementsContainer: {
-        backgroundColor: '#ecf5fd',
-        marginLeft: 24,
-        marginRight: 24,
-        marginBottom: 24
+
+        marginLeft: 5,
+        marginRight: 5,
+        marginBottom: 15
+    },
+    backgroundContainer: {
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+    },
+    overlay: {
+        opacity: 1,
+    },
+    backdrop: {
+        flex:1,
+        flexDirection: 'column'
+    },
+    headline: {
+        fontSize: 18,
+        textAlign: 'center',
+        backgroundColor: 'black',
+        color: 'white'
     }
 }
 
 function mapStateToProps(state,ownProps) {
     return {
         currWeight:state.currWeight,
-        calcReducer: state.calcReducer
+        calcReducer: state.calcReducer,
+        currBarbell:state.currBarbell
     };
 }
 //mapDispatchToProps is deleted and dispatch is there by default
 export default connect(mapStateToProps)(MainPage);
-
-/*
-*
-*  <View style={{flex:1,justifyContent: "center",alignItems: "center" , backgroundColor: '#FCCDDD'}}>
-                <Button style={styles.MidStyle}
-                        title="Home" onPress={this.onPressLearnMore}
-                />
-              </View>
-*
-* */

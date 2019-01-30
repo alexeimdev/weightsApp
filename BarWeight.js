@@ -4,11 +4,8 @@ import CustomImage from './CustomImage';
 import {connect} from 'react-redux';
 
 import {
-    Image,TouchableOpacity,View,Text,Dimensions,ImageBackground
+    View,Text,Dimensions,ImageBackground
 } from 'react-native';
-import {
-    Card
-} from 'react-native-paper';
 
 class BarWeight extends Component {
     constructor(props, context) {
@@ -29,17 +26,14 @@ class BarWeight extends Component {
     onChooseWeight(key) {
         const w_foraction = this.state.weight;
         let wkg,wlb,wpalte = '';
-
-
-
-
     }
 
 
 
     CalcRow(calc,index) {
+
         let ind = index;
-        let key = calc.wlb;
+        let key = parseInt(calc.wplate.substr(0,calc.wplate.length-2));
         switch(key) {
             case 10: {
                 return  <View><CustomImage imgkey={key} imageName={require('./img/10lb.png')} bU='1'/></View>
@@ -55,7 +49,24 @@ class BarWeight extends Component {
             }
             case 45: {
                 return  <View><CustomImage imgkey={key} imageName={require('./img/45lb.png')} bU='1'/></View>
-
+            }
+            case 55: {
+                return  <View><CustomImage imgkey={key} imageName={require('./img/55lb.png')} bU='1'/></View>
+                }
+            case 1: {
+                return  <View><CustomImage imgkey={key} imageName={require('./img/10kg_b.png')} bU='1'/></View>
+            }
+            case 2: {
+                return  <View><CustomImage imgkey={key} imageName={require('./img/20kg_b.png')} bU='1'/></View>
+            }
+            case 5: {
+                return  <View><CustomImage imgkey={key} imageName={require('./img/5kg_b.png')} bU='1'/></View>
+            }
+            case 11: {
+                return  <View><CustomImage imgkey={key} imageName={require('./img/1_5kg_b.png')} bU='1'/></View>
+            }
+            case 22: {
+                return  <View><CustomImage imgkey={key} imageName={require('./img/2_5kg_b.png')} bU='1'/></View>
             }
             default: {
                 return <View><Text>barweight</Text></View>
@@ -79,7 +90,7 @@ class BarWeight extends Component {
         );
 
     }
-};
+}
 /*
 const aa  = {
 

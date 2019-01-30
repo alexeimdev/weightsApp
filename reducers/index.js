@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux';
-import  {currWeight,calcReducer} from './calcReducer';
+import  {currWeight,calcReducer,currBarbell} from './calcReducer';
 
 
 const rootReducer = combineReducers({
     currWeight,
-    calcReducer
+    calcReducer,currBarbell
     //short hand property name
 })
 
