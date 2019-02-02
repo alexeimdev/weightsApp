@@ -20,7 +20,6 @@ export function calcReducer(state = [],action) {
 }
 
 export function currWeight(state = {currW:0},action) {
-    debugger;
     switch(action.type) {
         case 'ADDWEIGHT':
             return Object.assign({},state,{

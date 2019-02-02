@@ -10,7 +10,6 @@ import { Text,View
 export default class CurrWeight extends React.Component {
     render () {
         let kg = Number.parseFloat(this.props.curkg) + Number.parseFloat(this.props.brb.barbell);
-        debugger;
         let lb = Number.parseFloat((Number.parseFloat(this.props.brb.barbell)*(2.2).toFixed(2)) + Number.parseFloat(this.props.curlb)).toFixed(2);
 
         return (
