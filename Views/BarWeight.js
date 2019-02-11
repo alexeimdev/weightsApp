@@ -36,37 +36,37 @@ class BarWeight extends Component {
         let key = parseInt(calc.wplate.substr(0,calc.wplate.length-2));
         switch(key) {
             case 10: {
-                return  <View><CustomImage imgkey={key} imageName={require('./img/10lb.png')} bU='1'/></View>
+                return  <View><CustomImage imgkey={key} imageName={require('../img/10lb.png')} bU='1'/></View>
             }
             case 15: {
-                return  <View><CustomImage imgkey={key} imageName={require('./img/15lb.png')} bU='1'/></View>
+                return  <View><CustomImage imgkey={key} imageName={require('../img/15lb.png')} bU='1'/></View>
             }
             case 25: {
-                return  <View><CustomImage imgkey={key} imageName={require('./img/25lb.png')} bU='1'/></View>
+                return  <View><CustomImage imgkey={key} imageName={require('../img/25lb.png')} bU='1'/></View>
             }
             case 35: {
-                return  <View><CustomImage imgkey={key} imageName={require('./img/35lb.png')} bU='1'/></View>
+                return  <View><CustomImage imgkey={key} imageName={require('../img/35lb.png')} bU='1'/></View>
             }
             case 45: {
-                return  <View><CustomImage imgkey={key} imageName={require('./img/45lb.png')} bU='1'/></View>
+                return  <View><CustomImage imgkey={key} imageName={require('../img/45lb.png')} bU='1'/></View>
             }
             case 55: {
-                return  <View><CustomImage imgkey={key} imageName={require('./img/55lb.png')} bU='1'/></View>
+                return  <View><CustomImage imgkey={key} imageName={require('../img/55lb.png')} bU='1'/></View>
                 }
             case 1: {
-                return  <View><CustomImage imgkey={key} imageName={require('./img/10kg_b.png')} bU='1'/></View>
+                return  <View><CustomImage imgkey={key} imageName={require('../img/10kg_b.png')} bU='1'/></View>
             }
             case 2: {
-                return  <View><CustomImage imgkey={key} imageName={require('./img/20kg_b.png')} bU='1'/></View>
+                return  <View><CustomImage imgkey={key} imageName={require('../img/20kg_b.png')} bU='1'/></View>
             }
             case 5: {
-                return  <View><CustomImage imgkey={key} imageName={require('./img/5kg_b.png')} bU='1'/></View>
+                return  <View><CustomImage imgkey={key} imageName={require('../img/5kg_b.png')} bU='1'/></View>
             }
             case 11: {
-                return  <View><CustomImage imgkey={key} imageName={require('./img/1_5kg_b.png')} bU='1'/></View>
+                return  <View><CustomImage imgkey={key} imageName={require('../img/1_5kg_b.png')} bU='1'/></View>
             }
             case 22: {
-                return  <View><CustomImage imgkey={key} imageName={require('./img/2_5kg_b.png')} bU='1'/></View>
+                return  <View><CustomImage imgkey={key} imageName={require('../img/2_5kg_b.png')} bU='1'/></View>
             }
             default: {
                 return <View><Text>barweight</Text></View>
@@ -80,7 +80,7 @@ class BarWeight extends Component {
 
         <View style={{ alignItems: 'center', justifyContent: 'center'}}>
 
-                <ImageBackground source={require('./img/bb.png')} style={{width:350, height: 100}}>
+                <ImageBackground source={require('../img/bb.png')} style={{width:350, height: 100}}>
                     <View style={styles.view}>
                         {this.props.calcReducer.map(this.CalcRow)}
                     </View>

@@ -1,7 +1,7 @@
 'use strict'
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import * as calcWeight from './actions/calcActions';
+import * as calcWeight from '../actions/calcActions';
 
 import {
     Image,TouchableOpacity
@@ -31,6 +31,7 @@ class CustomImage extends Component {
         if(isBu == 99) {
             let barbell = parseInt(key.substr(0,key.length-2));
             this.props.dispatch(calcWeight.ChangeBarBell(barbell));
+
         }
         else
         {
@@ -128,12 +129,14 @@ class CustomImage extends Component {
 
     render() {
 
+        let imgkey = this.props.bU == '99'?parseInt(this.props.imgkey.substr(0,this.props.imgkey.length-2)):99;
         return (
 
-            <TouchableOpacity style={styles.touchable} onPress={() => this.onChooseWeight(this.props.imgkey,this.props.bU)}>
+            <TouchableOpacity style={[styles.touchable , [(imgkey == this.props.currBarbell.barbell) ? styles.barbellViewSelected:styles.barbellView]]} onPress={() => this.onChooseWeight(this.props.imgkey,this.props.bU)}>
                 <Image
                     key={this.props.imgkey}
                     source={this.props.imageName}
+
                    />
             </TouchableOpacity>
         );
@@ -159,13 +162,26 @@ const styles = {
 
         fontSize: 18,
         textAlign: 'center'
-    }
+    },
+    barbellViewSelected: {
+
+        borderStyle:'solid',
+        borderBottomWidth :5,
+        borderBottomColor: 'red',
+        borderBottomEndRadius:40,
+        borderBottomStartRadius:25
+
+    },
+    barbellView: {
+
+    },
 }
 
 function mapStateToProps(state,ownProps) {
     return {
         currWeight:state.currWeight,
-        calcReducer: state.calcReducer
+        calcReducer: state.calcReducer,
+        currBarbell:state.currBarbell
 
     };
 }

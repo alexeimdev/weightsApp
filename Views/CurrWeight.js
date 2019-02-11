@@ -39,7 +39,7 @@ const styles = {
         alignItems: 'center',
         justifyContent: 'center',
 
-        backgroundColor:'red'
+        backgroundColor:'#0056b3'
     },
     currWeightText: {
         color:'white',
@@ -53,7 +53,7 @@ const styles = {
         alignItems: 'center',
         justifyContent: 'center',
 
-        backgroundColor:'blue'
+        backgroundColor:'#0cdabf'
     }
 }
 
