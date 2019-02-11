@@ -1,6 +1,9 @@
 import { createDrawerNavigator } from 'react-navigation';
 import Mainpage from "./Mainpage";
 import CalcPage from "./CalcPage";
+import BuyShirts from "./BuyShirts";
+import SavedLifts from "./SavedLifts";
+import RoundsCounter from "./RoundsCounter";
 
 // const MyRoutes = createStackNavigator({
 //         HomeRT: {
@@ -22,13 +25,16 @@ const MyRoutes = createDrawerNavigator({
     BuyShirtsRT: {
         screen: BuyShirts
     },
-    SavedLifts: {
-        screen: BuyShirts
+    SavedLiftsRT: {
+        screen: SavedLifts
+    },
+    RoundsCounterRT: {
+        screen: RoundsCounter
     },
 
 },
     {
-        initialRouteName: 'HomeRT',
+        initialRouteName: 'RoundsCounterRT',
         drawerWidth:300
     }
 );

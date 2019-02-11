@@ -10,9 +10,6 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import configureStore from './store/configurestore';
 import {Provider} from 'react-redux';
-import Mainpage from "./Views/Mainpage";
-import CalcPage from "./Views/CalcPage";
-import { StackNavigator } from 'react-navigation';
 import MyRoutes from "./Views/navi";
 import SplashScreen from 'react-native-splash-screen';
 import Header from './Views/shared/Header';
@@ -33,11 +30,13 @@ export default class App extends Component<Props> {
         SplashScreen.hide()
     }
 
+
+
   render() {
     return (
         <Provider store={store}>
           <View style={styles.container}>
-             <Header />
+
             <MyRoutes />
           </View>
         </Provider>

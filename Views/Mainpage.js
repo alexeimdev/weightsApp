@@ -5,6 +5,7 @@ import * as calcActions from '../actions/calcActions'
 import CustomImage from './CustomImage';
 import BarWeight from './BarWeight';
 import CurrWeight from './CurrWeight';
+import Header from './shared/Header';
 
 import {
     Text,
@@ -22,12 +23,18 @@ class MainPage extends Component{
     constructor(props,context){
         super(props,context);
 
+        this.showMenu = this.showMenu.bind(this);
 
     }
 
     static navigationOptions = {
         header: null
     };
+
+    showMenu() {
+        this.props.navigation.openDrawer();
+    }
+
 
     render() {
 
@@ -37,7 +44,12 @@ class MainPage extends Component{
         let clb = Number.parseFloat((curr*2.2)).toFixed(2) == undefined ? '0':Number.parseFloat((curr*2.2)).toFixed(2);
 
          return (
-            <View style={styles.container}>
+             <View style={styles.uppcontainer}>
+
+                 <Header openHamburger={this.showMenu}/>
+
+                <View style={styles.container}>
+
                 <View style = {styles.backgroundContainer}>
                     <Image source = {require('../img/bgpic.png')} resizeMode = 'cover' style = {styles.backdrop} />
                 </View>
@@ -80,6 +92,7 @@ class MainPage extends Component{
                     </View>
                 </View>
             </View>
+             </View>
         );
 
     }
@@ -89,6 +102,9 @@ const styles = {
     container: {
         flex: 1,
         alignItems: 'center',
+    },
+    uppcontainer: {
+        flex:1,
     },
     weightsView: {
         paddingRight:20

@@ -18,7 +18,7 @@ export default class Header extends Component {
         return (
             <View style={styles.container}>
                 <Text style={styles.headerStyle}>EasyWeights</Text>
-                <TouchableOpacity style={styles.orange_box} onPress={() => alert('openDrawer')}>
+                <TouchableOpacity style={styles.orange_box} onPress={this.props.openHamburger}>
                     <Image style={styles.imgst} source={require('../../img/hburger.png')} />
                 </TouchableOpacity>
             </View>
