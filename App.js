@@ -26,9 +26,14 @@ const store = configureStore();
 type Props = {};
 export default class App extends Component<Props> {
 
+    constructor(props) {
+        super(props)
+       
+    }
     componentDidMount() {
         SplashScreen.hide()
     }
+
 
 
 
@@ -36,7 +41,6 @@ export default class App extends Component<Props> {
     return (
         <Provider store={store}>
           <View style={styles.container}>
-
             <MyRoutes />
           </View>
         </Provider>

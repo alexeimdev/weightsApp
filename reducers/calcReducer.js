@@ -14,6 +14,8 @@ export function calcReducer(state = [],action) {
             newArray.splice(index, 1)
             return newArray
 
+        case 'RESETBARBELL':
+            return []; 
         default:
             return state;
     }

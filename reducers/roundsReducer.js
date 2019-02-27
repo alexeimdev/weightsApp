@@ -8,6 +8,10 @@ export function rounds(state = {round:0},action) {
             return Object.assign({},state,{
                 round :(Number.parseInt(state.round) - 1)
             })
+        case 'RESETROUND':
+            return Object.assign({},state,{
+                round :0
+            })
         default:
             return state;
     }

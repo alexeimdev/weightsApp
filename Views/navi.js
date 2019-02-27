@@ -34,9 +34,21 @@ const MyRoutes = createDrawerNavigator({
 
 },
     {
-        initialRouteName: 'RoundsCounterRT',
-        drawerWidth:300
-    }
+        initialRouteName: 'HomeRT',
+        drawerWidth:300,
+        title:'Menu',
+        contentOptions: {
+            activeTintColor: '#e91e63',
+            itemsContainerStyle: {
+              marginVertical: 0,
+            },
+            iconContainerStyle: {
+              opacity: 1
+            }
+          }
+
+    },
+    
 );
 
 export default MyRoutes;

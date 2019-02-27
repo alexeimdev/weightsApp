@@ -1,31 +1,38 @@
 'use strict'
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import * as calcActions from '../actions/calcActions';
-
+import Header from './shared/Header';
 
 import {
     StyleSheet,
     View,
     ActivityIndicator,
+    Dimensions,TouchableOpacity,Text,Image,
 } from 'react-native';
 
 class BuyShirts extends Component{
     constructor(props,context){
         super(props,context);
 
+        this.showMenu = this.showMenu.bind(this);
     }
 
+    componentDidMount() {
+    
+    }
     static navigationOptions = {
         header: null
     };
 
-
+    showMenu() {
+        this.props.navigation.openDrawer();
+    }
 
     render() {
         return (
-            <View style={styles.container}>
-                
+            <View style={styles.uppcontainer}>
+                <Header openHamburger={this.showMenu}/>
+
             </View>
         );
 
@@ -34,14 +41,16 @@ class BuyShirts extends Component{
 
 const styles = {
     container: {
-        marginTop: 48,
-        flex: 1
+        flex: 1,
     },
+    uppcontainer: {
+        flex:1,
+    }
 }
 
 function mapStateToProps(state,ownProps) {
     return {
-        weight: state.weight
+        rounds: state.rounds
     };
 }
 //mapDispatchToProps is deleted and dispatch is there by default

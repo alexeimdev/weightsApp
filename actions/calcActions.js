@@ -13,3 +13,6 @@ export function ReCalcREM(currW) {
 export function ChangeBarBell(barbell) {
     return { type: 'CHANGEBARBELL', barbell : barbell}
 }
+export function ResetBarbell() {
+    return { type: 'RESETBARBELL'}
+}

@@ -2,9 +2,10 @@
 import React, { Component } from 'react';
 import CustomImage from './CustomImage';
 import {connect} from 'react-redux';
+import * as calcActions from '../actions/calcActions';
 
 import {
-    View,Text,Dimensions,ImageBackground
+    View,Text,Dimensions,ImageBackground,TouchableOpacity,Image
 } from 'react-native';
 
 class BarWeight extends Component {
@@ -20,12 +21,12 @@ class BarWeight extends Component {
             }
 
         };
-        this.onChooseWeight = this.onChooseWeight.bind(this);
+        this.onReset = this.onReset.bind(this);
     }
 
-    onChooseWeight(key) {
-        const w_foraction = this.state.weight;
-        let wkg,wlb,wpalte = '';
+    onReset() {
+        debugger;
+        this.props.dispatch(calcReducer.ResetBarbell());
     }
 
 
@@ -84,6 +85,7 @@ class BarWeight extends Component {
                     <View style={styles.view}>
                         {this.props.calcReducer.map(this.CalcRow)}
                     </View>
+                   
                 </ImageBackground>
 
         </View>

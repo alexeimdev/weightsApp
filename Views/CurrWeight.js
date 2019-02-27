@@ -16,13 +16,30 @@ export default class CurrWeight extends React.Component {
             <View style={{ flexDirection:'row-reverse',flex:1}}>
                 <View style={styles.currWeightTextViewKG}>
                     <Text style={styles.currWeightText}>{kg} kg</Text>
+                    <View style={{flex:1,flexDirection:'row'}}>
+                        <View style={{flex:1,textAlign:'center',alignItems: 'center'}}><Text style={styles.currWeightTextPercentsHeaders}>80%</Text></View>
+                        <View style={{flex:1,textAlign:'center',alignItems: 'center'}}><Text style={styles.currWeightTextPercentsHeaders}>70%</Text></View>
+                        <View style={{flex:1,textAlign:'center',alignItems: 'center'}}><Text style={styles.currWeightTextPercentsHeaders}>60%</Text></View>
+                    </View>
+                    <View style={{flex:1,flexDirection:'row'}}>
+                        <View style={{flex:1,textAlign:'center',alignItems: 'center'}}><Text style={styles.currWeightTextPercents}>{Number.parseFloat(kg*0.8).toFixed(2)}</Text></View>
+                        <View style={{flex:1,textAlign:'center',alignItems: 'center'}}><Text style={styles.currWeightTextPercents}>{Number.parseFloat(kg*0.7).toFixed(2)}</Text></View>
+                        <View style={{flex:1,textAlign:'center',alignItems: 'center'}}><Text style={styles.currWeightTextPercents}>{Number.parseFloat(kg*0.6).toFixed(2)}</Text></View>
+                    </View>
                 </View>
                 <View style={styles.currWeightTextView}>
                     <Text style={styles.currWeightText}>{lb} lb</Text>
+                    <View style={{flex:1,flexDirection:'row'}}>
+                        <View style={{flex:1,textAlign:'center',alignItems: 'center'}}><Text style={styles.currWeightTextPercentsHeaderskg}>80%</Text></View>
+                        <View style={{flex:1,textAlign:'center',alignItems: 'center'}}><Text style={styles.currWeightTextPercentsHeaderskg}>70%</Text></View>
+                        <View style={{flex:1,textAlign:'center',alignItems: 'center'}}><Text style={styles.currWeightTextPercentsHeaderskg}>60%</Text></View>
+                    </View>
+                    <View style={{flex:1,flexDirection:'row'}}>
+                        <View style={{flex:1,textAlign:'center',alignItems: 'center'}}><Text style={styles.currWeightTextPercentskg}>{Number.parseFloat(lb*0.8).toFixed(2)}</Text></View>
+                        <View style={{flex:1,textAlign:'center',alignItems: 'center'}}><Text style={styles.currWeightTextPercentskg}>{Number.parseFloat(lb*0.7).toFixed(2)}</Text></View>
+                        <View style={{flex:1,textAlign:'center',alignItems: 'center'}}><Text style={styles.currWeightTextPercentskg}>{Number.parseFloat(lb*0.6).toFixed(2)}</Text></View>
+                    </View>
                 </View>
-
-
-
             </View>
         )
     }
@@ -44,7 +61,28 @@ const styles = {
     currWeightText: {
         color:'white',
         fontWeight:'bold',
-        fontSize:25
+        fontSize:25,
+        height:65
+    },
+    currWeightTextPercents: {
+        color:'#0056b3',
+        fontSize:15,
+        fontWeight:'bold',    
+    },
+    currWeightTextPercentsHeaders: {
+        color:'red',
+        fontWeight:'bold',
+        fontSize:15,
+    },
+    currWeightTextPercentskg: {
+        color:'#0cdabf',
+        fontSize:15,
+        fontWeight:'bold',    
+    },
+    currWeightTextPercentsHeaderskg: {
+        color:'red',
+        fontWeight:'bold',
+        fontSize:15,
     },
     currWeightTextViewKG: {
         flex:0.5,

@@ -30,7 +30,7 @@ class MainPage extends Component{
     static navigationOptions = {
         header: null
     };
-
+    
     showMenu() {
         this.props.navigation.openDrawer();
     }
@@ -45,9 +45,7 @@ class MainPage extends Component{
 
          return (
              <View style={styles.uppcontainer}>
-
-                 <Header openHamburger={this.showMenu}/>
-
+                <Header openHamburger={this.showMenu}/>
                 <View style={styles.container}>
 
                 <View style = {styles.backgroundContainer}>
