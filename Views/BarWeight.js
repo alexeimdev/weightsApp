@@ -100,7 +100,7 @@ const aa  = {
 const styles = {
     view: {
         flexDirection:'row-reverse',
-        marginStart:75
+        marginStart:30
     },
 
     image: {
