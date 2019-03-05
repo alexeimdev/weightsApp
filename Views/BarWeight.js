@@ -26,7 +26,7 @@ class BarWeight extends Component {
 
     onReset() {
         debugger;
-        this.props.dispatch(calcReducer.ResetBarbell());
+        this.props.dispatch(calcActions.ResetBarbell());
     }
 
 
@@ -81,7 +81,10 @@ class BarWeight extends Component {
 
         <View style={{ alignItems: 'center', justifyContent: 'center'}}>
 
-                <ImageBackground source={require('../img/bb.png')} style={{width:350, height: 100}}>
+                <ImageBackground source={require('../img/bb.png')} style={{width:350, height: 100, flexDirection: 'row-reverse', alignItems: 'center'}}>
+                    <TouchableOpacity onPress={this.onReset}>
+                        <Image source={require('../img/reset.png')} style={styles.resetButton}/>
+                    </TouchableOpacity>
                     <View style={styles.view}>
                         {this.props.calcReducer.map(this.CalcRow)}
                     </View>
@@ -102,7 +105,7 @@ const styles = {
         flexDirection:'row-reverse',
         marginStart:75
     },
-
+    
     image: {
         width:85
     },
@@ -111,7 +114,7 @@ const styles = {
         justifyContent: 'center'
     },
     text: {
-
+        
         fontSize: 18,
         textAlign: 'center'
     },
@@ -122,6 +125,10 @@ const styles = {
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection:'row'
+    },
+    resetButton: {
+        width: 45,
+        height: 45,
     }
 }
 
